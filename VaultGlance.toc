@@ -1,0 +1,17 @@
+## Interface: 120001
+## Title: |cFF00CCFFVault|rGlance
+## Notes: Shows Great Vault progress with completed activities, threshold separators, and delve tracking.
+## Author: Slaur
+## Version: 1.5.0
+## SavedVariables: VaultGlanceDB
+## SavedVariablesPerCharacter: VaultGlanceCharDB
+## DefaultState: enabled
+
+Libs\LibStub.lua
+Libs\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1.lua
+Libs\LibDBIcon-1.0.lua
+
+Core.lua
+Minimap.lua
+Overlay.lua

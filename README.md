@@ -9,6 +9,16 @@ It adds:
 - local tracking for dungeon and delve names
 - chat messages for completions and vault upgrades
 
+## Screenshots
+
+### Great Vault overlay
+
+![VaultGlance Great Vault](docs/screenshots/great-vault.png)
+
+### Minimap summary
+
+![VaultGlance minimap summary](docs/screenshots/minimap-info-window.png)
+
 ## AI note
 
 This addon was coded with AI help.

@@ -1,0 +1,39 @@
+name: Attach Release Zip
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build addon zip
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          ZIP_NAME="VaultGlance-${TAG_NAME#v}.zip"
+
+          mkdir -p dist/VaultGlance
+          cp -r Core.lua Minimap.lua Overlay.lua VaultGlance.toc Libs dist/VaultGlance/
+
+          cd dist
+          zip -r "../${ZIP_NAME}" VaultGlance
+
+      - name: Upload zip to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          ZIP_NAME="VaultGlance-${TAG_NAME#v}.zip"
+          gh release upload "${TAG_NAME}" "${ZIP_NAME}" --clobber
